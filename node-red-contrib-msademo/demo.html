@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('public demo',{
+        category: 'demo',
+        color: '#4169E1',
+        defaults: {
+            name: {value:""},
+	    groupby: {value:""},
+	    sortby: {value:""},
+	    consumer: {vale:""},
+	    queue: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "face.png",
+        label: function() {
+            return this.name||"public demo";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="public demo">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-groupby"><i class="icon-tag"></i> GroupBy</label>
+        <input type="text" id="node-input-groupby" placeholder="Groupby">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sortby"><i class="icon-tag"></i> SortBy</label>
+        <input type="text" id="node-input-sortby" placeholder="Sortby">
+    </div>
+    <div class="form-row">
+        <label for="node-input-consumer"><i class="icon-tag"></i> Consumer</label>
+        <input type="text" id="node-input-consumer" placeholder="Consumer">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queue"><i class="icon-tag"></i> Queue</label>
+        <input type="text" id="node-input-queue" placeholder="Queue">
+    </div>
+
+
+
+</script>
+
+<script type="text/x-red" data-help-name="public demo">
+    <p>that node probides the ability to call a docker</p>
+</script>
