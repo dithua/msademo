@@ -7,7 +7,9 @@
 	    groupby: {value:""},
 	    sortby: {value:""},
 	    consumer: {vale:""},
-	    queue: {value:""}
+	    queuec: {value:""},
+	    queuep: {value:""}
+
         },
         inputs:1,
         outputs:1,
@@ -32,12 +34,16 @@
         <input type="text" id="node-input-sortby" placeholder="Sortby">
     </div>
     <div class="form-row">
-        <label for="node-input-consumer"><i class="icon-tag"></i> Consumer</label>
+        <label for="node-input-consumer"><i class="icon-tag"></i> Microservice</label>
         <input type="text" id="node-input-consumer" placeholder="Consumer">
     </div>
     <div class="form-row">
-        <label for="node-input-queue"><i class="icon-tag"></i> Queue</label>
-        <input type="text" id="node-input-queue" placeholder="Queue">
+        <label for="node-input-queuec"><i class="icon-tag"></i> Queue to Consume</label>
+        <input type="text" id="node-input-queuec" placeholder="QueueC">
+    </div>
+    <div class="form-row">
+        <label for="node-input-queuep"><i class="icon-tag"></i> Queue to Publish</label>
+        <input type="text" id="node-input-queuep" placeholder="QueueP">
     </div>
 
 
@@ -45,5 +51,5 @@
 </script>
 
 <script type="text/x-red" data-help-name="public demo">
-    <p>that node probides the ability to call a docker</p>
+    <p>that node provides the ability to call a docker</p>
 </script>

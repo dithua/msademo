@@ -6,7 +6,8 @@ module.exports = function(RED) {
 	this.groupby = config.groupby;
 	this.sortby = config.sortby;
 	this.consumer = config.consumer;
-	this.queue = config.queue;
+	this.queuec = config.queuec;
+	this.queueq = config.queuep;
 
 	node.on('input', function(msg) {
 		console.log(this.groupby);
@@ -14,16 +15,18 @@ module.exports = function(RED) {
         if(this.groupby != ""){
 
 	var commGroup = 'docker run -e VarForGroup=' + this.groupby;
-        var commQueue = ' -e VarForQueue=' + this.queue;
+        var commQueueC = ' -e VarForQueueC=' + this.queuec;
+        var commQueueP = ' -e VarForQueueP=' + this.queueq;
         var commCons = ' ckary/' + this.consumer;
-        var command = commGroup + commQueue  + commCons;
+        var command = commGroup + commQueueC + commQueueP  + commCons;
 
 
 	}else if (this.sortby != ""){
 	var commSort = 'docker run -e VarForSort=' + this.sortby;
-	var commQueue = ' -e VarForQueue=' + this.queue;
+  var commQueueC = ' -e VarForQueueC=' + this.queuec;
+  var commQueueP = ' -e VarForQueueP=' + this.queueq;
 	var commCons = ' ckary/' + this.consumer;
-	var command = commSort + commQueue  + commCons;
+	var command = commSort + commQueueC + commQueueP + commCons;
 	}
 
 		console.log(command);

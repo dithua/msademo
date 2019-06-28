@@ -4,7 +4,8 @@ var jarray= [];
 var myarray= [];
 
 var jsonattr = process.env.VarForSort;
-var envqueue = process.env.VarForQueue;
+var envqueueC = process.env.VarForQueueC;
+var envqueueP = process.env.VarForQueueP;
 
 function modifyJ(msg){
 
@@ -17,7 +18,7 @@ function modifyJ(msg){
 }
 
 
-amqp.connect('amqp://visitor:visitor@192.168.1.9/', function(error0, connection) {
+amqp.connect('amqp://visitor:visitor@192.168.1.5/', function(error0, connection) {
   if (error0) {
     throw error0;
     }
@@ -29,9 +30,9 @@ amqp.connect('amqp://visitor:visitor@192.168.1.9/', function(error0, connection)
       durable: false
     });
 
-      channel.bindQueue(envqueue,'groupedex2','first');
+      channel.bindQueue(envqueueC,'groupedex2','first');
       channel.prefetch(1);
-      channel.consume(envqueue,function (ms){
+      channel.consume(envqueueC,function (ms){
 
       console.log("[x] sould have received array from grouped:\n",ms.content.toString( ));
 
@@ -43,14 +44,14 @@ amqp.connect('amqp://visitor:visitor@192.168.1.9/', function(error0, connection)
       channel.assertExchange('sortedex','direct', {
         durable: false
       });
-      channel.assertQueue('sortedq', {
+      channel.assertQueue(envqueueP, {
         exclusive: false
       }, function(error2, q) {
         if (error2) {
           throw error2;
         }
 
-      channel.bindQueue('sortedq','sortedex','third');
+      channel.bindQueue(envqueueP,'sortedex','third');
 
       channel.publish('sortedex','third',Buffer.from(msg));
       console.log("\n\n[x] Sending my array")
